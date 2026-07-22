@@ -1,13 +1,13 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: وبلاگ من
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
   analytics:
     provider: plausible
-  locale: en-US
-  baseUrl: quartz.jzhao.xyz
+  locale: fa-IR
+  baseUrl: zaadpro.github.io/myblog
   ignorePatterns:
     - private
     - templates
@@ -21,24 +21,24 @@ configuration:
       code: IBM Plex Mono
     colors:
       lightMode:
-        light: "#faf8f8"
-        lightgray: "#e5e5e5"
-        gray: "#b8b8b8"
-        darkgray: "#4e4e4e"
-        dark: "#2b2b2b"
-        secondary: "#284b63"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
+        light: "#f9f1e9"
+        lightgray: "#e3d3c2"
+        gray: "#9e9a97"
+        darkgray: "#383736"
+        dark: "#1f1e1d"
+        secondary: "#e37b3e"
+        tertiary: "#e36d28"
+        highlight: "#ee5a2521"
         textHighlight: "#fff23688"
       darkMode:
-        light: "#161618"
-        lightgray: "#393639"
+        light: "#1e1e1e"
+        lightgray: "#383838"
         gray: "#646464"
-        darkgray: "#d4d4d4"
-        dark: "#ebebec"
-        secondary: "#7b97aa"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
+        darkgray: "#e6e7f7"
+        dark: "#f7f8ff"
+        secondary: "#ffa06a"
+        tertiary: "#ef7732"
+        highlight: "#ee5a252b"
         textHighlight: "#b3aa0288"
 plugins:
   - source: github:quartz-community/created-modified-date
@@ -71,8 +71,16 @@ plugins:
     enabled: true
     order: 50
     layout:
-      position: right
-      priority: 30
+      position: left
+      priority: 60
+      display: desktop-only
+  - source: github:quartz-community/table-of-contents
+    enabled: true
+    order: 50
+    layout:
+      position: beforeBody
+      priority: 60
+      display: mobile-only
   - source: github:quartz-community/crawl-links
     enabled: true
     options:
@@ -99,13 +107,30 @@ plugins:
     enabled: false
     order: 92
   - source: github:quartz-community/fonts
-    enabled: true
+    enabled: false
   - source: github:quartz-community/remove-draft
     enabled: true
   - source: github:quartz-community/explicit-publish
     enabled: false
-  - source: github:quartz-community/alias-redirects
+  - source: github:quartz-community/unlisted-pages
     enabled: true
+    options: {}
+    order: 45
+  - source: github:quartz-community/encrypted-pages
+    enabled: true
+    options:
+      iterations: 600000
+      passwordField: password
+      unlistWhenEncrypted: false
+      outputPath: static/encryptedContentIndex.json
+  - source: github:quartz-community/stacked-pages
+    enabled: false
+    layout:
+      position: afterBody
+      priority: 50
+      display: all
+  - source: github:quartz-community/alias-redirects
+    enabled: false
   - source: github:quartz-community/content-index
     enabled: true
     options:
@@ -114,7 +139,7 @@ plugins:
   - source: github:quartz-community/favicon
     enabled: true
   - source: github:quartz-community/og-image
-    enabled: true
+    enabled: false
   - source: github:quartz-community/cname
     enabled: true
   - source: github:quartz-community/canvas-page
@@ -126,9 +151,9 @@ plugins:
   - source: github:quartz-community/tag-page
     enabled: true
   - source: github:quartz-community/explorer
-    enabled: true
+    enabled: false
     layout:
-      position: left
+      position: right
       priority: 50
   - source: github:quartz-community/graph
     enabled: true
@@ -138,7 +163,7 @@ plugins:
   - source: github:quartz-community/search
     enabled: true
     layout:
-      position: left
+      position: afterBody
       priority: 20
       group: toolbar
       groupOptions:
@@ -146,7 +171,7 @@ plugins:
   - source: github:quartz-community/backlinks
     enabled: true
     layout:
-      position: right
+      position: afterBody
       priority: 50
   - source: github:quartz-community/article-title
     enabled: true
@@ -154,36 +179,35 @@ plugins:
       position: beforeBody
       priority: 10
   - source: github:quartz-community/content-meta
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 20
   - source: github:quartz-community/tag-list
-    enabled: false
+    enabled: true
     layout:
-      position: beforeBody
+      position: afterBody
       priority: 30
   - source: github:quartz-community/page-title
     enabled: true
     layout:
-      position: left
+      position: afterBody
       priority: 10
+      group: toolbar
   - source: github:quartz-community/darkmode
     enabled: true
     layout:
-      position: left
+      position: afterBody
       priority: 30
       group: toolbar
   - source: github:quartz-community/reader-mode
     enabled: true
     layout:
-      position: left
+      position: afterBody
       priority: 35
       group: toolbar
   - source: github:quartz-community/breadcrumbs
-    enabled: true
-    options:
-      rootName: "خانه"
+    enabled: false
     layout:
       position: beforeBody
       priority: 5
@@ -200,15 +224,10 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
+        Telegram: https://t.me/your_channel
+        Github: https://github.com/zaadpro
   - source: github:quartz-community/recent-notes
-    enabled: true
-    options:
-      limit: 5
-    layout:
-      position: left
-      priority: 60
+    enabled: false
   - source: github:quartz-community/spacer
     enabled: true
     options: {}
@@ -221,16 +240,22 @@ plugins:
     enabled: true
     options: {}
     order: 50
+  - source: github:quartz-community/obsidian-plugin-excalidraw
+    enabled: true
+    options:
+      enableInteraction: true
+      darkMode: auto
+      exportPadding: 20
   - source: github:quartz-community/note-properties
     enabled: true
     options:
       includeAll: false
       includedProperties:
-        - description
-        - tags
-        - aliases
+        - status
+        - created
+        - modified
       excludedProperties: []
-      hidePropertiesView: false
+      hidePropertiesView: true
       delimiters: ---
       language: yaml
     order: 5
@@ -238,32 +263,20 @@ plugins:
       position: beforeBody
       priority: 15
       display: all
-  - source: github:quartz-community/unlisted-pages
-    enabled: true
-    options: {}
-    order: 45
-  - source: github:quartz-community/encrypted-pages
+  - source: github:fardm/quartz-content-meta-plus
     enabled: true
     options:
-      iterations: 600000
-      passwordField: password
-      unlistWhenEncrypted: false
-      outputPath: static/encryptedContentIndex.json
-    order: 900
+      showComma: false
+      showReadingTime: false
     layout:
-      position: body
-      priority: 100
-      display: all
-  - source: github:quartz-community/stacked-pages
-    enabled: false
-    layout:
-      position: afterBody
-      priority: 50
-      display: all
+      position: beforeBody
+      priority: 20
+  - source: github:fardm/quartz-clickable-images
+    enabled: true
 layout:
   groups:
     toolbar:
-      priority: 35
+      priority: 5
       direction: row
       gap: 0.5rem
   byPageType:
@@ -284,4 +297,5 @@ layout:
       positions:
         right: []
     canvas: {}
-    bases: {}
+    bases:
+      template: minimal

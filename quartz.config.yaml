@@ -272,6 +272,22 @@ plugins:
       darkMode: auto
       exportPadding: 20
     order: 50
+  - source: github:fardm/quartz-clickable-images
+    enabled: true
+    options: {}
+    order: 50
+    layout:
+      position: afterBody
+      priority: 50
+  - source: github:fardm/quartz-content-meta-plus
+    enabled: true
+    options:
+      showComma: false
+      showReadingTime: false
+    order: 20
+    layout:
+      position: beforeBody
+      priority: 20
 layout:
   groups:
     toolbar:
