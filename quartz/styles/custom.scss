@@ -84,3 +84,16 @@ code {
   transform: scale(1.05);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
+
+/* فارسی کردن کلمهٔ Home در نوار بالا */
+.breadcrumb-container > .breadcrumb-element:first-child a,
+.breadcrumb-container > .breadcrumb-element:first-child p {
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+.breadcrumb-container > .breadcrumb-element:first-child a::after,
+.breadcrumb-container > .breadcrumb-element:first-child p::after {
+  content: "خانه";
+  font-size: 0.95rem;
+  line-height: normal;
+}
