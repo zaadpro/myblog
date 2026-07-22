@@ -1,6 +1,11 @@
 ---
-title: Welcome to Quartz
+title: خانه
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+# به سایت من خوش آمدید! 👋
+
+اینجا یادداشت‌های من را می‌خوانید.
+
+## مطالب اخیر
+
+- [[اولین مطلب من]]
