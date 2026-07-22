@@ -291,7 +291,7 @@ plugins:
 layout:
   groups:
     toolbar:
-      priority: 35
+      priority: 15
       direction: row
       gap: 0.5rem
   byPageType:
