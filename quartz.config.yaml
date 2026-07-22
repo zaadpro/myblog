@@ -6,7 +6,7 @@ configuration:
   enablePopovers: true
   analytics:
     provider: plausible
-  locale: en-US
+  locale: fa-IR
   baseUrl: zaadpro.github.io/myblog
   ignorePatterns:
     - private
@@ -16,8 +16,8 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Schibsted Grotesk
-      body: Source Sans Pro
+      header: Vazirmatn
+      body: Vazirmatn
       code: IBM Plex Mono
     colors:
       lightMode:
