@@ -1,182 +1,194 @@
 @use "./variables.scss" as *;
 @use "./_card-view.scss";
+@use "./_ui.scss";
+@use "./my-callouts.scss";
 
 // ================ 01. THEME VARIABLES ================
 
 :root {
-  --bodyFont: "Vazirmatn" !important;
-  --headerFont: "Vazirmatn" !important;
-  --codeFont: "IBM Plex Mono" !important;
-  --background: #efdfcd;
-  --on-background: #f9e8d6;
-  --secondary-shadow: #ee5a2512;
-  --grain-opacity: .3;
+    --bodyFont: "DanaVF" !important;
+    --headerFont: "DanaVF" !important;
+    --codeFont: "DanaVF" !important;
+    --background: #efdfcd;
+    --on-background: #f9e8d6;
+    --secondary-shadow: #ee5a2512;
+    --grain-opacity: .3;
 }
 
 [saved-theme="dark"] {
-  --background: #161618;
-  --on-background: #1f1f22;
-  --secondary-shadow: #ee5a2512;
-  --grain-opacity: 0.04;
+    --background: #161618;
+    --on-background: #1f1f22;
+    --secondary-shadow: #ee5a2512;
+    --grain-opacity: 0.04;
 }
 
 // ================ 02. FONTS ================
 
-// اگر فونت DanaVF را داری، این را فعال کن و fontOrigin را در config به local تغییر بده:
-// @font-face {
-//   font-family: 'DanaVF';
-//   src: url('/static/fonts/DanaVF.woff2') format('woff2-variations');
-//   font-weight: 100 900;
-//   font-style: normal;
-//   font-display: swap;
-// }
+@font-face { 
+    font-family: 'DanaVF';
+    src: url('/static/fonts/DanaVF.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
 
 // ================ 03. TYPOGRAPHY ================
 
 body {
-  font-size: 1.1em;
+    font-size: 1.1em;
 }
 
 p, li {
-  line-height: 1.9rem;
-  font-weight: 400;
-}
+    line-height: 1.9rem;
+    font-weight: 400;
+} 
 
 sup {
-  vertical-align: middle;
+    vertical-align: middle; //اگه توی متن از پانوشت استفاده شده باشه باعث میشه فاصله بین خطوط به هم نریزه
 }
 
-h1 {
-  font-size: 1.7rem;
-  font-weight: 800;
+h1{
+    font-size: 1.7rem;
+    font-weight: 800;
 }
 
 h2 {
-  font-size: 1.55rem;
-  font-weight: 800;
-  margin-top: 1rem;
-  margin-bottom: -0.2rem;
-  border-bottom: 1px solid var(--lightgray);
-  padding-bottom: 0.2em;
+    font-size: 1.55rem;
+    font-weight: 800;
+    margin-top: 1rem;
+    margin-bottom: -0.2rem;
+    border-bottom: 1px solid var(--lightgray);
+    padding-bottom: 0.2em;
 }
 
 h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    // margin-bottom: -0.2rem;
 }
 
-h4, h5, h6 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-top: 1rem;
-  margin-bottom: -0.2rem;
+h4,
+h5,
+h6 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: -0.2rem;
 }
 
 .footnotes > ol > li {
-  line-height: 4rem;
+    line-height: 4rem;
 }
 
 button {
-  font-family: var(--bodyFont);
+    font-family: var(--bodyFont);
 }
+
 
 // ================ 04. IMAGES ================
 
 img {
-  display: block;
-  margin: 0 auto !important;
+    display: block;
+    margin: 0 auto !important; // وسطچین کردن تصاویر
 }
 
 // ================ 05. BLOCKQUOTE ================
 
 blockquote.transclude > :is(h1, h2, h3, h4, h5, h6):nth-child(1) {
-  display: none;
+    display: none;
 }
 
-blockquote {
-  border-left: none;
-  border-right: 3px solid var(--secondary);
-  padding-right: 1rem;
+blockquote { // انتقال بوردر رنگی به سمت راست تا مناسب متن فارسی باشه
+    border-left: none;
+    border-right: 3px solid var(--secondary);
+    padding-right: 1rem;
 }
 
 // ================ 06. LINKS ================
 
 a.internal {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 a.external .external-icon {
-  transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 // ================ 07. CODE BLOCKS ================
 
 pre {
-  background: #afafaf1a;
+    background: #afafaf1a;
 }
 
-pre > code {
-  overflow-x: auto;
+pre>code {
+    overflow-x: auto;
 }
 
 code {
-  direction: ltr !important;
+    direction: ltr !important;
 }
 
 figure[data-rehype-pretty-code-figure] {
-  direction: ltr;
+    direction: ltr;
 }
 
 // ================ 08. MERMAID ================
 
 .mermaid {
-  direction: rtl !important;
+    direction: rtl !important;
 }
 
-pre:has(> code.mermaid) {
-  .clipboard-button {
-    display: none;
-  }
-  svg {
-    margin: auto;
-  }
+pre:has(>code.mermaid) {
+    // background-color: transparent;
+    .clipboard-button {
+        display: none;
+    }
+    svg {
+        margin: auto;
+    }
 }
 
 .nodeLabel {
-  font-family: var(--bodyFont);
+    font-family: var(--bodyFont);
 }
 
+/* همه شاخه‌ها */
 .mindmap-node[class*="section-"]:not(.section-root) path,
 .mindmap-node[class*="section-"]:not(.section-root) rect,
 .mindmap-node[class*="section-"]:not(.section-root) circle {
-  fill: var(--lightgray) !important;
-  stroke: var(--gray) !important;
+    fill: var(--lightgray) !important;
+    stroke: var(--gray) !important;
 }
 
 .mindmap-node[class*="section-"]:not(.section-root) text {
-  fill: var(--darkgray) !important;
+    fill: var(--darkgray) !important;
 }
 
+/* خطوط اتصال */
 .mindmap-edges .edge {
-  stroke: var(--gray) !important;
+    stroke: var(--gray) !important;
 }
 
+/* مرکز */
 .section-root circle,
 .section-root path {
-  fill: var(--secondary) !important;
+    fill: var(--secondary) !important;
 }
 
 .section-root text {
-  fill: var(--light) !important;
+    fill: var(--light) !important;
 }
 
 code.mermaid svg path.edge {
-  stroke-width: 4px !important;
+    stroke-width: 4px !important;
 }
 
-// ================ 09. BUTTONS ================
 
+// ================ 08. BUTTONS ================
+
+// --------- telegram --------------
+/* From Uiverse.io by adamgiebl */ 
 button.telegram-btn {
   font-size: 1rem;
   font-weight: 600;
@@ -223,10 +235,17 @@ button.telegram-btn:active {
 }
 
 @keyframes fly-1 {
-  from { transform: translateY(0.1em); }
-  to { transform: translateY(-0.1em); }
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
 }
 
+
+// -------- all note btn ----------
 .all-notes-btn {
   display: inline-flex;
   align-items: center;
@@ -241,11 +260,13 @@ button.telegram-btn:active {
   color: var(--dark);
   border: 1px solid var(--lightgray);
   transition: all 0.5s ease;
-  background: linear-gradient(
+background:
+linear-gradient(
     180deg,
     color-mix(in srgb, var(--light) 96%, white),
     var(--light)
-  );
+);
+
 }
 
 .all-notes-btn svg {
@@ -257,33 +278,44 @@ button.telegram-btn:active {
 .all-notes-btn:hover {
   border-color: color-mix(in srgb, var(--secondary) 50%, var(--lightgray));
   color: var(--secondary);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--secondary) 10%, transparent);
+
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--secondary) 10%, transparent);
+
 }
 
 .all-notes-btn:hover svg {
   transform: translateX(-4px);
 }
 
-// ================ 10. CSSCLASSES ================
 
+// ================ 09. CSSCLASSES ================
+
+
+// -------------- hide h1 title ------------
 body:is(
-  [data-slug="index"],
-  [data-slug="obsidian"]
+    [data-slug="index"],
+    [data-slug="obsidian"]
 ) :is(.article-title, .content-meta-plus) {
-  display: none;
+    display: none;
 }
 
-.bases-hide-meta .bases-view-meta {
-  display: none;
+
+// ---------------- bases ----------------
+
+// hide meta
+.bases-hide-meta .bases-view-meta  {
+    display: none;
 }
 
+// 2col
 .bases-2col div.bases-cards {
-  justify-items: center;
-  grid-template-columns: 1fr 1fr !important;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr !important;
 }
 
 @media (max-width: 480px) {
-  .bases-2col div.bases-cards {
-    grid-template-columns: 1fr !important;
-  }
+    .bases-2col div.bases-cards {
+        grid-template-columns: 1fr !important;
+    }
 }
