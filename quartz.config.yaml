@@ -16,8 +16,8 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Vazirm
-      body: Vazirm
+      header: Vazirmatn
+      body: Vazirmatn
       code: IBM Plex Mono
     colors:
       lightMode:
