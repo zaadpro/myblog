@@ -289,3 +289,10 @@ body:is(
     grid-template-columns: 1fr !important;
   }
 }
+
+// فورس کردن فونت وزیرمتن روی همه‌چیز
+body,
+h1, h2, h3, h4, h5, h6,
+p, li, a, span, div, button, input, textarea {
+  font-family: "Vazirmatn", sans-serif !important;
+}
